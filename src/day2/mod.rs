@@ -61,16 +61,13 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     let mut temp;
     
     while let Some(a) = lines.next() {
-        if let Ok(line) = a {
-            temp = line.split(' ');
-            match temp.next().unwrap() {
-                "forward"   => sub.forward(temp.next().unwrap().parse().unwrap()),
-                "down"      => sub.down(   temp.next().unwrap().parse().unwrap()),
-                "up"        => sub.up(     temp.next().unwrap().parse().unwrap()),
-                _ => panic!()
-            }
-        } else {
-            panic!()
+        let line = a.unwrap();
+        temp = line.split(' ');
+        match temp.next().unwrap() {
+            "forward"   => sub.forward(temp.next().unwrap().parse().unwrap()),
+            "down"      => sub.down(   temp.next().unwrap().parse().unwrap()),
+            "up"        => sub.up(     temp.next().unwrap().parse().unwrap()),
+            _ => panic!()
         }
     }
 
@@ -85,16 +82,13 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     let mut temp;
     
     while let Some(a) = lines.next() {
-        if let Ok(line) = a {
-            temp = line.split(' ');
-            match temp.next().unwrap() {
-                "forward"   => sub.aim_forward(temp.next().unwrap().parse().unwrap()),
-                "down"      => sub.aim_down(   temp.next().unwrap().parse().unwrap()),
-                "up"        => sub.aim_up(     temp.next().unwrap().parse().unwrap()),
-                _ => panic!()
-            }
-        } else {
-            panic!()
+        let line = a.unwrap();
+        temp = line.split(' ');
+        match temp.next().unwrap() {
+            "forward"   => sub.aim_forward(temp.next().unwrap().parse().unwrap()),
+            "down"      => sub.aim_down(   temp.next().unwrap().parse().unwrap()),
+            "up"        => sub.aim_up(     temp.next().unwrap().parse().unwrap()),
+            _ => panic!()   
         }
     }
 

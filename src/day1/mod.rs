@@ -40,7 +40,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
 
 }
 
-pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
+pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
 
 
     let mut result = 0;
@@ -48,13 +48,12 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     let mut temp; 
 
     let data: Vec<i64> = lines.filter_map(|x| x.ok()).filter_map(|x| x.parse().ok()).collect();
-    let mut iter = data.iter().enumerate();
 
-    for _ in 0..3 {
-        prev += iter.next().unwrap().1;
+    for i in 0..3 {
+        prev += data[i];
     }
 
-    while let Some((i, val)) = iter.next() {
+    for i in 3..data.len() {
         temp = 0;
         for j in 0..3 {
             temp += data[i-j]; 
