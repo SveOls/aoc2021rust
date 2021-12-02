@@ -5,6 +5,7 @@ use std::time::Instant;
 
 mod file_handling;
 mod day1;
+mod day2;
 
 
 fn main() {
@@ -17,7 +18,7 @@ fn main() {
 
     match line.parse().unwrap() {
         1 => day1 ::run(&line).unwrap(), // done
-        // 2 => day2:: run(&line).unwrap(),
+        2 => day2:: run(&line).unwrap(),
         // 3 => day3:: run(&line).unwrap(),
         // 4 => day4:: run(&line).unwrap(),
         // 5 => day5:: run(&line).unwrap(),
