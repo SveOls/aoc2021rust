@@ -7,6 +7,9 @@ mod file_handling;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
+mod day5;
+mod day6;
 
 
 fn main() {
@@ -21,9 +24,9 @@ fn main() {
         1 => day1 ::run(&line).unwrap(), // done
         2 => day2:: run(&line).unwrap(),
         3 => day3:: run(&line).unwrap(),
-        // 4 => day4:: run(&line).unwrap(),
-        // 5 => day5:: run(&line).unwrap(),
-        // 6 => day6:: run(&line).unwrap(),
+        4 => day4:: run(&line).unwrap(),
+        5 => day5:: run(&line).unwrap(),
+        6 => day6:: run(&line).unwrap(),
         // 7 => day7:: run(&line).unwrap(),
         // 8 => day8:: run(&line).unwrap(),
         // 9 => day9:: run(&line).unwrap(),
