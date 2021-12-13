@@ -1,4 +1,5 @@
 #![feature(iter_advance_by)]
+#![feature(int_abs_diff)]
 
 use std::time::Instant;
 
@@ -10,6 +11,25 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
+mod day8;
+mod day9;
+mod day10;
+mod day11;
+mod day12;
+mod day13;
+// mod day14;
+// mod day15;
+// mod day16;
+// mod day17;
+// mod day18;
+// mod day19;
+// mod day20;
+// mod day21;
+// mod day22;
+// mod day23;
+// mod day24;
+// mod day25;
 
 
 fn main() {
@@ -27,13 +47,13 @@ fn main() {
         4 => day4:: run(&line).unwrap(),
         5 => day5:: run(&line).unwrap(),
         6 => day6:: run(&line).unwrap(),
-        // 7 => day7:: run(&line).unwrap(),
-        // 8 => day8:: run(&line).unwrap(),
-        // 9 => day9:: run(&line).unwrap(),
-        // 10=> day10::run(&line).unwrap(),
-        // 11=> day11::run(&line).unwrap(),
-        // 12=> day12::run(&line).unwrap(),
-        // 13=> day13::run(&line).unwrap(),
+        7 => day7:: run(&line).unwrap(),
+        8 => day8:: run(&line).unwrap(),
+        9 => day9:: run(&line).unwrap(),
+        10=> day10::run(&line).unwrap(),
+        11=> day11::run(&line).unwrap(),
+        12=> day12::run(&line).unwrap(),
+        13=> day13::run(&line).unwrap(),
         // 14=> day14::run(&line).unwrap(),
         // 15=> day15::run(&line).unwrap(),
         // 16=> day16::run(&line).unwrap(),
