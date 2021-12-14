@@ -108,10 +108,16 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
                 temp.0 = false;
             } else if b == "x" {
                 temp.0 = true;
+            } else {
+                unreachable!()
             }
+        } else {
+            unreachable!()
         }
         if let Some(c) = datar2.next() {
             temp.1 = c.parse().unwrap()
+        } else {
+            unreachable!()
         }
         folds.push(temp);
     }
@@ -122,10 +128,14 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
             if dir {
                 if temp[0] > num {
                     temp[0] = 2*num - temp[0];
+                } else if temp[0] == num {
+                    panic!()
                 }
             } else {
                 if temp[1] > num {
                     temp[1] = 2*num - temp[1];
+                } else if temp[1] == num {
+                    panic!()
                 }
             }
         }
@@ -134,22 +144,26 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     }
     let maxx: usize = content.iter().map(|x| x.0).fold(0, |tot, x| if x > tot { x } else { tot } );
     let maxy: usize = content.iter().map(|x| x.1).fold(0, |tot, x| if x > tot { x } else { tot } );
-    for _ in 0..maxx+2 {
-        print!("..");
+    for _ in 0..maxx+4 {
+        print!(".");
     }
     println!();
     for j in 0..maxy+2 {
+        print!(".");
         for i in 0..maxx+2 {
-            print!(".");
+            print!("");
             if content.contains(&(i, j)) {
-                print!("#")
+                print!("░")
             } else {
-                print!(".")
+                print!(" ")
             }
         }
-        println!()
-
+        println!(".");
     }
+    for _ in 0..maxx+4 {
+        print!(".");
+    }
+    println!();
 
     Ok(())
 }

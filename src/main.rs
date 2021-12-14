@@ -18,7 +18,7 @@ mod day10;
 mod day11;
 mod day12;
 mod day13;
-// mod day14;
+mod day14;
 // mod day15;
 // mod day16;
 // mod day17;
@@ -34,13 +34,16 @@ mod day13;
 
 fn main() {
     let mut line = String::new();
+    println!("[day]t = run example");
+    println!("[day]long = run long test (if available)");
+    println!("[day][no file recognized] = run main task");
     println!("Which day:");
     std::io::stdin().read_line(&mut line).unwrap();
     line = line.split_whitespace().collect();
     // println!(">_{}_<", line);
    let now = Instant::now();
 
-    match line.parse().unwrap() {
+    match line.chars().filter(|x| x.is_digit(10)).collect::<String>().parse().unwrap() {
         1 => day1 ::run(&line).unwrap(), // done
         2 => day2:: run(&line).unwrap(),
         3 => day3:: run(&line).unwrap(),
@@ -54,7 +57,7 @@ fn main() {
         11=> day11::run(&line).unwrap(),
         12=> day12::run(&line).unwrap(),
         13=> day13::run(&line).unwrap(),
-        // 14=> day14::run(&line).unwrap(),
+        14=> day14::run(&line).unwrap(),
         // 15=> day15::run(&line).unwrap(),
         // 16=> day16::run(&line).unwrap(),
         // 17=> day17::run(&line).unwrap(),
