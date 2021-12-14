@@ -2,6 +2,9 @@
 #![feature(int_abs_diff)]
 
 use std::time::Instant;
+// let now = Instant::now();
+// let after = now.elapsed();
+// println!("{}s, {}ms, {}μs, {}ns", after.as_secs()%1000, after.as_millis()%1000, after.as_micros()%1000, after.as_nanos()%1000);
 
 
 mod file_handling;
@@ -19,17 +22,17 @@ mod day11;
 mod day12;
 mod day13;
 mod day14;
-// mod day15;
-// mod day16;
-// mod day17;
-// mod day18;
-// mod day19;
-// mod day20;
-// mod day21;
-// mod day22;
-// mod day23;
-// mod day24;
-// mod day25;
+mod day15;
+mod day16;
+mod day17;
+mod day18;
+mod day19;
+mod day20;
+mod day21;
+mod day22;
+mod day23;
+mod day24;
+mod day25;
 
 
 fn main() {
@@ -58,17 +61,17 @@ fn main() {
         12=> day12::run(&line).unwrap(),
         13=> day13::run(&line).unwrap(),
         14=> day14::run(&line).unwrap(),
-        // 15=> day15::run(&line).unwrap(),
-        // 16=> day16::run(&line).unwrap(),
-        // 17=> day17::run(&line).unwrap(),
-        // 18=> day18::run(&line).unwrap(),
-        // 19=> day19::run(&line).unwrap(),
-        // 20=> day20::run(&line).unwrap(),
-        // 21=> day21::run(&line).unwrap(),
-        // 22=> day22::run(&line).unwrap(),
-        // 23=> day23::run(&line).unwrap(),
-        // 24=> day24::run(&line).unwrap(),
-        // 25=> day25::run(&line).unwrap(),
+        15=> day15::run(&line).unwrap(),
+        16=> day16::run(&line).unwrap(),
+        17=> day17::run(&line).unwrap(),
+        18=> day18::run(&line).unwrap(),
+        19=> day19::run(&line).unwrap(),
+        20=> day20::run(&line).unwrap(),
+        21=> day21::run(&line).unwrap(),
+        22=> day22::run(&line).unwrap(),
+        23=> day23::run(&line).unwrap(),
+        24=> day24::run(&line).unwrap(),
+        25=> day25::run(&line).unwrap(),
         _ => println!("Not covered"),
     };
 
