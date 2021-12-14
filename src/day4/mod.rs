@@ -39,7 +39,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     'outer2: for i in draws.iter() {
         for board in boards.iter_mut() {
             if board.draw(*i) {
-                println!("Result: {}", board.score() * i);
+                println!("day 4a result:  {}", board.score() * i);
                 break 'outer2;
             }
         }
@@ -81,7 +81,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
             }
         }
         if boards.iter().filter(|x| !x.poke()).count() == 0 {
-            println!("Result: {}", last_score);
+            println!("day 4b result:  {}", last_score);
             break;
         }
     }

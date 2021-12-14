@@ -56,7 +56,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     }
     let epsilon = isize::from_str_radix(&data.iter().map(|x| x.to_string()).collect::<String>(), 2)?;
 
-    println!("result: {}", gamma * epsilon);
+    println!("day 3a result:  {}", gamma * epsilon);
 
     Ok(())
 
@@ -91,7 +91,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     let ox_gen    = usize::from_str_radix(&part1[0].iter().collect::<String>(), 2)?;
     let co2_scrub = usize::from_str_radix(&part2[0].iter().collect::<String>(), 2)?;
 
-    println!("result: {}", ox_gen * co2_scrub);
+    println!("day 3b result:  {}", ox_gen * co2_scrub);
 
     Ok(())
 

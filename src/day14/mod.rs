@@ -76,7 +76,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     let min = data.iter().map(|(_, val)| val).min().unwrap();
 
     
-    println!("{} - {} = {}", max, min, max - min);
+    println!("day 14a result: {}", max - min);
 
     Ok(())
 }
@@ -98,7 +98,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     let min = data.iter().map(|(_, val)| val).min().unwrap();
 
     
-    println!("{} - {} = {}", max, min, max - min);
+    println!("day 14b result: {}", max - min);
 
     Ok(())
 }

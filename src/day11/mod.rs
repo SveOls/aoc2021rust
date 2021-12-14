@@ -34,7 +34,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     }
     // println!("{:?}", data);
 
-    println!("result: {}", total);
+    println!("day 11a result: {}", total);
 
     Ok(())
 }
@@ -54,7 +54,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             // break;
         }
     }
-    println!("Result: {}", step);
+    println!("day 11b result: {}", step);
 
 
 

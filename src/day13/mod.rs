@@ -78,7 +78,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     }
 
 
-    println!("result: {}", content.iter().count());
+    println!("day 13a result: {}", content.iter().count());
 
     Ok(())
 }
@@ -144,6 +144,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     }
     let maxx: usize = content.iter().map(|x| x.0).fold(0, |tot, x| if x > tot { x } else { tot } );
     let maxy: usize = content.iter().map(|x| x.1).fold(0, |tot, x| if x > tot { x } else { tot } );
+    println!("day 13b result:");
     for _ in 0..maxx+4 {
         print!(".");
     }

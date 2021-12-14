@@ -23,7 +23,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             .collect())
         .filter(|x: &Vec<usize>| x[0] == x[2] || x[1] == x[3])
         .for_each(|x| add_points(&x, &mut points)); 
-    println!("{}", points.iter().filter(|(_, &val)| val > 1).count());
+    println!("day 5a result:  {}", points.iter().filter(|(_, &val)| val > 1).count());
     Ok(())
 }
 
@@ -34,7 +34,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             .filter_map(|x| x.parse().ok())
             .collect())
         .for_each(|x| add_points_b(&x, &mut points)); 
-    println!("{}", points.iter().filter(|(_, &val)| val > 1).count());
+    println!("day 5b result:  {}", points.iter().filter(|(_, &val)| val > 1).count());
     Ok(())
 }
 

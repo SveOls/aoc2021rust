@@ -16,13 +16,13 @@ pub fn run(inp: &str) -> Result<(), Box<dyn std::error::Error>> {
 
 pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
  
-    println!("result: {}", rounds(lines, 80)?);
+    println!("day 6a result:  {}", rounds(lines, 80)?);
 
     Ok(())
 }
 pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
  
-    println!("result: {}", rounds(lines, 256)?);
+    println!("day 6b result:  {}", rounds(lines, 256)?);
 
     Ok(())
 }

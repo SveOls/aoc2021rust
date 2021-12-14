@@ -43,7 +43,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
 
     }
 
-    println!("Result: {}", recfunc(&data, BTreeSet::new(), 0, false, &mut HashMap::new()));
+    println!("day 12a result: {}", recfunc(&data, BTreeSet::new(), 0, false, &mut HashMap::new()));
 
     Ok(())
 }
@@ -74,7 +74,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
 
     }
 
-    println!("Result: {}", recfunc(&data, BTreeSet::new(), 0, true, &mut HashMap::new()));
+    println!("day 12b result: {}", recfunc(&data, BTreeSet::new(), 0, true, &mut HashMap::new()));
 
     Ok(())
 }

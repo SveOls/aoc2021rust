@@ -71,7 +71,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
         }
     }
 
-    println!("{}", sub.get_depth() * sub.get_position());
+    println!("day 2a result:  {}", sub.get_depth() * sub.get_position());
     Ok(())
 
 }
@@ -92,6 +92,6 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
         }
     }
 
-    println!("{}", sub.get_depth() * sub.get_position());
+    println!("day 2b result:  {}", sub.get_depth() * sub.get_position());
     Ok(())
 }

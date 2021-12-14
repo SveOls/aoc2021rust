@@ -35,7 +35,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
             panic!()
         }
     }
-    println!("result {}", result);
+    println!("day 1a result:  {}", result);
     Ok(())
 
 }
@@ -65,7 +65,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     }
 
 
-    println!("result {}", result);
+    println!("day 1b result:  {}", result);
     Ok(())
 
 

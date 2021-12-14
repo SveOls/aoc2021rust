@@ -49,7 +49,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             }
         }
     }
-    println!("result: {}", sum);
+    println!("day 9a result:  {}", sum);
     Ok(())
 }
 
@@ -146,6 +146,6 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     }
 
 
-    println!("result: {}", results.iter().product::<usize>());
+    println!("day 9b result:  {}", results.iter().product::<usize>());
     Ok(())
 }

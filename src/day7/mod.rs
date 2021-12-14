@@ -35,7 +35,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             }
         }
     }   
-    println!("result: {}", cost.unwrap().1);
+    println!("day 7a result:  {}", cost.unwrap().1);
     Ok(())
 }
 pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
@@ -54,7 +54,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             cost = Some((i, tc))
         }
     }   
-    println!("result: {}", cost.unwrap().1);
+    println!("day 7b result:  {}", cost.unwrap().1);
     Ok(())
 }
 

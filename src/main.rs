@@ -43,11 +43,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Which day:");
     std::io::stdin().read_line(&mut line)?;
     line = line.split_whitespace().collect();
-    // println!(">_{}_<", line);
    let now = Instant::now();
 
     match line.chars().filter(|x| x.is_digit(10)).collect::<String>().parse()? {
-        1 => day1:: run(&line)?, // done
+        1 => day1:: run(&line)?,
         2 => day2:: run(&line)?,
         3 => day3:: run(&line)?,
         4 => day4:: run(&line)?,
@@ -72,6 +71,33 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         23=> day23::run(&line)?,
         24=> day24::run(&line)?,
         25=> day25::run(&line)?,
+        99=> {
+            day1:: run(&"1" )?;
+            day2:: run(&"2" )?;
+            day3:: run(&"3" )?;
+            day4:: run(&"4" )?;
+            day5:: run(&"5" )?;
+            day6:: run(&"6" )?;
+            day7:: run(&"7" )?;
+            day8:: run(&"8" )?;
+            day9:: run(&"9" )?;
+            day10::run(&"10")?;
+            day11::run(&"11")?;
+            day12::run(&"12")?;
+            day13::run(&"13")?;
+            day14::run(&"14")?;
+            day15::run(&"15")?;
+            day16::run(&"16")?;
+            day17::run(&"17")?;
+            day18::run(&"18")?;
+            day19::run(&"19")?;
+            day20::run(&"20")?;
+            day21::run(&"21")?;
+            day22::run(&"22")?;
+            day23::run(&"23")?;
+            day24::run(&"24")?;
+            day25::run(&"25")?;
+        }
         _ => println!("Not covered"),
     };
 

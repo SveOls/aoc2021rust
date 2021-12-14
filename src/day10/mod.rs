@@ -40,8 +40,8 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
         }
     }
     score_b.sort();
-    println!("{}", score_a);
-    println!("{}", score_b[score_b.len()/2]);
+    println!("day 10a result: {}", score_a);
+    println!("day 10b result: {}", score_b[score_b.len()/2]);
 
     Ok(())
 }
