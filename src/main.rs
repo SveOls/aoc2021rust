@@ -35,47 +35,47 @@ mod day24;
 mod day25;
 
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut line = String::new();
     println!("[day]t = run example");
     println!("[day]long = run long test (if available)");
     println!("[day][no file recognized] = run main task");
     println!("Which day:");
-    std::io::stdin().read_line(&mut line).unwrap();
+    std::io::stdin().read_line(&mut line)?;
     line = line.split_whitespace().collect();
     // println!(">_{}_<", line);
    let now = Instant::now();
 
-    match line.chars().filter(|x| x.is_digit(10)).collect::<String>().parse().unwrap() {
-        1 => day1 ::run(&line).unwrap(), // done
-        2 => day2:: run(&line).unwrap(),
-        3 => day3:: run(&line).unwrap(),
-        4 => day4:: run(&line).unwrap(),
-        5 => day5:: run(&line).unwrap(),
-        6 => day6:: run(&line).unwrap(),
-        7 => day7:: run(&line).unwrap(),
-        8 => day8:: run(&line).unwrap(),
-        9 => day9:: run(&line).unwrap(),
-        10=> day10::run(&line).unwrap(),
-        11=> day11::run(&line).unwrap(),
-        12=> day12::run(&line).unwrap(),
-        13=> day13::run(&line).unwrap(),
-        14=> day14::run(&line).unwrap(),
-        15=> day15::run(&line).unwrap(),
-        16=> day16::run(&line).unwrap(),
-        17=> day17::run(&line).unwrap(),
-        18=> day18::run(&line).unwrap(),
-        19=> day19::run(&line).unwrap(),
-        20=> day20::run(&line).unwrap(),
-        21=> day21::run(&line).unwrap(),
-        22=> day22::run(&line).unwrap(),
-        23=> day23::run(&line).unwrap(),
-        24=> day24::run(&line).unwrap(),
-        25=> day25::run(&line).unwrap(),
+    match line.chars().filter(|x| x.is_digit(10)).collect::<String>().parse()? {
+        1 => day1:: run(&line)?, // done
+        2 => day2:: run(&line)?,
+        3 => day3:: run(&line)?,
+        4 => day4:: run(&line)?,
+        5 => day5:: run(&line)?,
+        6 => day6:: run(&line)?,
+        7 => day7:: run(&line)?,
+        8 => day8:: run(&line)?,
+        9 => day9:: run(&line)?,
+        10=> day10::run(&line)?,
+        11=> day11::run(&line)?,
+        12=> day12::run(&line)?,
+        13=> day13::run(&line)?,
+        14=> day14::run(&line)?,
+        15=> day15::run(&line)?,
+        16=> day16::run(&line)?,
+        17=> day17::run(&line)?,
+        18=> day18::run(&line)?,
+        19=> day19::run(&line)?,
+        20=> day20::run(&line)?,
+        21=> day21::run(&line)?,
+        22=> day22::run(&line)?,
+        23=> day23::run(&line)?,
+        24=> day24::run(&line)?,
+        25=> day25::run(&line)?,
         _ => println!("Not covered"),
     };
 
     let after = now.elapsed();
     println!("{}s, {}ms, {}μs, {}ns", after.as_secs()%1000, after.as_millis()%1000, after.as_micros()%1000, after.as_nanos()%1000);
-
+    Ok(())
 }
