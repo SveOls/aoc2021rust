@@ -6,6 +6,10 @@ use std::collections::HashMap;
 use super::file_handling;
 
 
+type Memos = HashMap<(char, char, usize), HashMap<char, usize>>; 
+type Map = HashMap<(char, char), char>; 
+
+
 pub fn run(inp: &str) -> Result<(), Box<dyn std::error::Error>> {
 
     run_a(file_handling::get_file(inp)?)?;
@@ -63,7 +67,7 @@ pub fn run_a(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     lines.next();
 
     let temp: Vec<Vec<char>> = lines.map(|x| x.unwrap().split(" -> ").flat_map(|x| x.chars().collect::<Vec<char>>()).collect()).collect();
-    let mut data: HashMap<(char, char), char> = HashMap::new();
+    let mut data = Map::new();
     for i in temp.iter() {
         data.insert((i[0], i[1]), i[2]);
     }
@@ -85,7 +89,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
     lines.next();
 
     let temp: Vec<Vec<char>> = lines.map(|x| x.unwrap().split(" -> ").flat_map(|x| x.chars().collect::<Vec<char>>()).collect()).collect();
-    let mut data: HashMap<(char, char), char> = HashMap::new();
+    let mut data = Map::new();
     for i in temp.iter() {
         data.insert((i[0], i[1]), i[2]);
     }
@@ -108,7 +112,7 @@ fn start_recfunc(inp: Vec<char>, compare: &HashMap<(char, char), char>, maxdepth
     for i in inp.iter() {
         *ret.entry(*i).or_insert(0) += 1;
     }
-    let mut saved = HashMap::new();
+    let mut saved = Memos::new();
     for i in 0..inp.len()-1 {
         let temp = recfunc((inp[i], inp[i+1]), &mut saved, compare, 0, maxdepth);
         for (key, val) in temp {
@@ -119,7 +123,7 @@ fn start_recfunc(inp: Vec<char>, compare: &HashMap<(char, char), char>, maxdepth
 }
 
 
-fn recfunc(inp: (char, char), saved: &mut HashMap<(char, char, usize), HashMap<char, usize>>, compare: &HashMap<(char, char), char>, depth: usize, maxdepth: usize) -> HashMap<char, usize> {
+fn recfunc(inp: (char, char), saved: &mut Memos, compare: &Map, depth: usize, maxdepth: usize) -> HashMap<char, usize> {
     let mut ret = HashMap::new();
     if depth < maxdepth {
         if let Some(&a) = compare.get(&inp) {
