@@ -18,7 +18,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     let mut stuf = Bits::new(lines.flat_map(|x| x.unwrap().chars().map(|x| x.to_digit(16).unwrap() as usize + 16).collect::<Vec<usize>>()).collect()); 
 
-    println!("day16a result: {}", stuf.letsgo_a());
+    println!("day 16a result: {}", stuf.letsgo_a());
     Ok(())
 
 }
@@ -28,7 +28,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     let mut stuf = Bits::new(lines.flat_map(|x| x.unwrap().chars().map(|x| x.to_digit(16).unwrap() as usize + 16).collect::<Vec<usize>>()).collect()); 
 
-    println!("day16b result: {}", stuf.letsgo());
+    println!("day 16b result: {}", stuf.letsgo());
     Ok(())
 
 }
@@ -56,44 +56,46 @@ impl Bits {
     fn advance(&mut self, by: usize) -> usize {
         let mut ret = 0;
         for i in 0..by {
-            let temp = self.get_num();
-            ret += temp * (2*temp).pow((by - i - 1) as u32);
+            ret += self.get_num() * 2usize.pow((by - i - 1) as u32);
             self.pos += 1;
         }
         ret
     }
+    fn get_four(&mut self) -> (usize, bool) {
+        let mut ret = (0, false);
+        ret.1 = self.advance(1) != 0;
+        ret.0 = self.advance(4);
+        ret
+    }
     fn letsgo(&mut self) -> usize {
         let mut ret = vec![self.advance(3), self.advance(3)];
-        if ret[1] != 4 {
+        if ret[1] == 4 {
+            ret.push(0);
+            while {
+                let t = self.get_four(); 
+                ret[2] = ret[2]*16usize + t.0;
+                t.1
+            } {}
+        } else {
             ret.push(self.advance(1));
             ret.push(self.advance(15 - 4*ret[2]));
-            if ret[2] == 0 {
-                let curr_pos = self.pos;
-                while self.pos - curr_pos < ret[3] {
-                    ret.push(self.letsgo());
+            match ret[2] {
+                0 => {
+                    let curr_pos = self.pos + ret[3];
+                    while self.pos < curr_pos {
+                        ret.push(self.letsgo());
+                    }
                 }
-            } else {
-                for _ in 0..ret[3] {
-                    ret.push(self.letsgo());
-                }
+                1 => (0..ret[3]).for_each(|_| ret.push(self.letsgo())),
+                _ => unreachable!()
             }
-        } else {
-            while self.advance(1) == 1 {
-                ret.push(self.advance(4));
-            }            
-            ret.push(self.advance(4));
-            let mut total = 0;
-            for i in 2..ret.len() {
-                total += ret[i]*16usize.pow((ret.len()-i-1) as u32);
-            }
-            ret.push(total);
         }
         match ret[1] {
             0 =>  ret.iter().skip(4).sum(),
             1 =>  ret.iter().skip(4).product(),
             2 => *ret.iter().skip(4).min().unwrap(),
             3 => *ret.iter().skip(4).max().unwrap(),
-            4 => *ret.iter().last().unwrap(),
+            4 => ret[2],
             5 => (ret[4] >  ret[5]) as usize,
             6 => (ret[4] <  ret[5]) as usize,
             7 => (ret[4] == ret[5]) as usize,
@@ -108,22 +110,20 @@ impl Bits {
             ret.push(self.advance(1));
             ret.push(self.advance(15 - 4*ret[2]));
             if ret[2] == 0 {
-                let curr_pos = self.pos;
-                while self.pos - curr_pos < ret[3] {
+                let curr_pos = self.pos + ret[3];
+                while self.pos < curr_pos {
                     r += self.letsgo_a();
                 }
             } else {
-                for _ in 0..ret[3] {
-                    r += self.letsgo_a();
-                }
+                r += (0..ret[3]).map(|_| self.letsgo_a()).sum::<usize>();
             }
-
         } else {
-            while self.advance(1) == 1 {
-                ret.push(self.advance(4));
-            }
-            ret.push(self.advance(4));
+            while self.get_four().1 {}
         }
         r
     }
 }
+
+
+
+

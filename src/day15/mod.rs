@@ -64,7 +64,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
         }
     }
 
-    println!("day15a result: {}", data[data.len()-1][data[0].len()-1].1.unwrap());
+    println!("day 15a result: {}", data[data.len()-1][data[0].len()-1].1.unwrap());
     Ok(())
 }
 
@@ -146,38 +146,38 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
         }
     }
 
-    println!("day15b result: {}", data[data.len()-1][data[0].len()-1].1.unwrap());
+    println!("day 15b result: {}", data[data.len()-1][data[0].len()-1].1.unwrap());
 
-    for (y, i) in data.iter().enumerate() {
-        if y % pre_data.len() == 0 {
-            println!();
-        }
-        for (x, j) in i.iter().enumerate() {
-            if x % pre_data[0].len() == 0 {
-                print!("  ");
-            }
-            print!("{} ", j.0);
-        }
-        println!()
-    }
-    println!();
-    for i in data.iter() {
-        for j in i.iter() {
-            match j.1 {
-                Some(a) => {
-                    if a / 100 > 0 {
-                        print!("{} ", a)
-                    } else if a / 10 > 0 {
-                        print!("{}  ", a)
-                    } else {
-                        print!("{}   ", a)
-                    }
-                }
-                None => print!("___ "),
-            }
-        }
-        println!()
-    }
+    //for (y, i) in data.iter().enumerate() {
+    //    if y % pre_data.len() == 0 {
+    //        println!();
+    //    }
+    //    for (x, j) in i.iter().enumerate() {
+    //        if x % pre_data[0].len() == 0 {
+    //            print!("  ");
+    //        }
+    //        print!("{} ", j.0);
+    //    }
+    //    println!()
+    //}
+    //println!();
+    //for i in data.iter() {
+    //    for j in i.iter() {
+    //        match j.1 {
+    //            Some(a) => {
+    //                if a / 100 > 0 {
+    //                    print!("{} ", a)
+    //                } else if a / 10 > 0 {
+    //                    print!("{}  ", a)
+    //                } else {
+    //                    print!("{}   ", a)
+    //                }
+    //            }
+    //            None => print!("___ "),
+    //        }
+    //    }
+    //    println!()
+    //}
 
 
     Ok(())
