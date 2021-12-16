@@ -21,8 +21,6 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     data[0][0].1 = Some(0);
 
 
-
-
     let mut candidates: HashMap<(usize, usize), (usize, usize)> = HashMap::new();
     candidates.insert((0, 1), (0, 0));
     candidates.insert((1, 0), (0, 0));
@@ -31,22 +29,15 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     visited[0][0] = true;
 
     while !visited[data.len()-1][data[0].len()-1] {
-    // for _ in 0..4 {
-        // for i in candidates.iter() {
-        //     print!("{:?}", i.0);
-        // }
-        // println!("");
+
         let mut remove = None;
         let mut min = std::i64::MAX;
         for (&(y, x), &(from_y, from_x)) in candidates.iter() {
-            // println!("Checking {:?} from {:?}", (y, x), (from_y, from_x));
             if data[y][x].0 + data[from_y][from_x].1.unwrap() < min {
-                // println!("Replacing. Cost: {}",data[y][x].0 + data[from_y][from_x].1.unwrap());
                 min = data[y][x].0 + data[from_y][from_x].1.unwrap();
                 remove = Some((y, x));
             }
         }
-        // println!();
         let a = candidates.remove_entry(&remove.unwrap()).unwrap();
         data[a.0.0][a.0.1].1 = Some(data[a.0.0][a.0.1].0 + data[a.1.0][a.1.1].1.unwrap());
         visited[a.0.0][a.0.1] = true;
@@ -70,41 +61,10 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             if !c && !candidates.contains_key(&(a.0.0, a.0.1 + 1)) {
                 candidates.insert((a.0.0, a.0.1 + 1), (a.0.0, a.0.1));
             }
-            // else {
-            //     let &(y, x) = candidates.get(&(a.0.0, a.0.1 + 1)).unwrap();
-            //     if data[y][x] > data[a.0.0][a.0.1] {
-            //         candidates.insert((a.0.0, a.0.1 + 1), (a.0.0, a.0.1));
-            //     }
-            // }
         }
     }
 
     println!("day15a result: {}", data[data.len()-1][data[0].len()-1].1.unwrap());
-
-    // for i in data.iter() {
-    //     for j in i.iter() {
-    //         print!("{} ", j.0);
-    //     }
-    //     println!()
-    // }
-    // println!();
-    // for i in data.iter() {
-    //     for j in i.iter() {
-    //         match j.1 {
-    //             Some(a) => {
-    //                 if a / 10 > 0 {
-    //                     print!("{} ", a)
-    //                 } else {
-    //                     print!("{}  ", a)
-    //                 }
-    //             }
-    //             None => print!("__ "),
-    //         }
-    //     }
-    //     println!()
-    // }
-
-
     Ok(())
 }
 
