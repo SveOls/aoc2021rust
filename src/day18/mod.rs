@@ -25,15 +25,10 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     let data: Vec<Comm> = lines.map(|x| Comm::new(x.unwrap())).collect();
 
-    let mut max_mag = 0;
-    for i in 0..data.len() {
-        for j in 0..data.len() {
-            if i != j {
-                max_mag = max_mag.max((data[i].clone() + data[j].clone()).magnitude());
-            }
-        }
-    }
-    println!("day 18b result: {}", max_mag);
+    println!("day 18b result: {}", (0..data.len())
+        .map(|i| (0..data.len())
+            .filter(|&j| j != i)
+            .map(|j| (data[i].clone() + data[j].clone()).magnitude()).max().unwrap()).max().unwrap());
 
     Ok(())
 }
@@ -68,11 +63,11 @@ impl Comm {
     fn split(&mut self) -> bool {
         match self {
             Comm::A(a, b) => {
-                let c = a.split();
-                let d = if !c {
+                if !a.split() {
                     b.split()
-                } else { false };
-                c || d
+                } else {
+                    true
+                }
             }
             Comm::B(a) => {
                 if *a >= 10 {
@@ -85,11 +80,10 @@ impl Comm {
                     false
                 }
             }
-            _ => panic!()
+            Comm::None => panic!()
         }
     }
     fn adder(&mut self, from: bool, with: i64) {
-        // false = from left, true = from right
         match self {
             Comm::A(a, b) => {
                 if from {
@@ -114,15 +108,15 @@ impl Comm {
                     };
                     Some((left, right))
                 } else {
-                    let mut ret = None;
                     if let Some(a) = a.pangs(depth + 1) {
                         b.adder(false, a.1);
-                        ret = Some((a.0, 0))
+                        Some((a.0, 0))
                     } else if let Some(b) = b.pangs(depth + 1) {
                         a.adder(true, b.0);
-                        ret = Some((0, b.1));
+                        Some((0, b.1))
+                    } else {
+                        None
                     }
-                    ret
                 }
             }
             Comm::B(a) => {
