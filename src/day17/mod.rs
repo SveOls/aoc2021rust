@@ -21,8 +21,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     let x_range = (data[0], data[1]);
     let y_range = (data[2], data[3]);
     
-    let y_pos    = |y: i64, after: usize| { (0..after).fold(0, |tot, i| tot + y - i as i64) }; 
-    let x_pos    = |x: i64, after: usize| { (0..after).fold(0, |tot, i| tot + (x - i as i64).max(0)) };
+    let y_pos    = |y: i64, after: usize| { (0..after).fold(0, |tot, i| tot + y - i as i64) };
 
 
     let min_x = {
@@ -42,14 +41,18 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     for x in min_x..=x_range.1 {
         for y in y_range.0.min(0)..=y_range.1.max(-y_range.0) {
+            let mut curr_y = 0;
+            let mut curr_x = 0; 
             for after in 0.. {
-                let curr_y = y_pos(y, after);
-                let curr_x = x_pos(x, after);
+                
                 if curr_x > x_range.1 || curr_y < y_range.0 {
                     break;
                 } else if (x_range.1 - curr_x)*(curr_x - x_range.0) >= 0 && (y_range.1 - curr_y)*(curr_y - y_range.0) >= 0 {
                     result.insert(y);
+                    break;
                 }  
+                curr_x += (x - after).max(0);
+                curr_y += y - after;
             }
         }
     }
@@ -67,10 +70,6 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
    
     let x_range = (data[0], data[1]);
     let y_range = (data[2], data[3]);
-    
-    let y_pos    = |y: i64, after: usize| { (0..after).fold(0, |tot, i| tot + y - i as i64) }; 
-    let x_pos    = |x: i64, after: usize| { (0..after).fold(0, |tot, i| tot + (x - i as i64).max(0)) };
-
 
     let min_x = {
         let mut sum = 0;
@@ -89,14 +88,18 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     for x in min_x..=x_range.1 {
         for y in y_range.0.min(0)..=y_range.1.max(-y_range.0) {
+            let mut curr_y = 0;
+            let mut curr_x = 0; 
             for after in 0.. {
-                let curr_y = y_pos(y, after);
-                let curr_x = x_pos(x, after);
+                
                 if curr_x > x_range.1 || curr_y < y_range.0 {
                     break;
                 } else if (x_range.1 - curr_x)*(curr_x - x_range.0) >= 0 && (y_range.1 - curr_y)*(curr_y - y_range.0) >= 0 {
                     result.insert((x, y));
+                    break;
                 }  
+                curr_x += (x - after).max(0);
+                curr_y += y - after;
             }
         }
     }

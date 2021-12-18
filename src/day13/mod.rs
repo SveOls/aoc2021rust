@@ -154,7 +154,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
         for i in 0..maxx+2 {
             print!("");
             if content.contains(&(i, j)) {
-                print!("░")
+                print!("¤")
             } else {
                 print!(" ")
             }

@@ -89,14 +89,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             day15::run(&"15")?;
             day16::run(&"16")?;
             day17::run(&"17")?;
-            day18::run(&"18")?;
-            day19::run(&"19")?;
-            day20::run(&"20")?;
-            day21::run(&"21")?;
-            day22::run(&"22")?;
-            day23::run(&"23")?;
-            day24::run(&"24")?;
-            day25::run(&"25")?;
+            // day18::run(&"18")?;
+            // day19::run(&"19")?;
+            // day20::run(&"20")?;
+            // day21::run(&"21")?;
+            // day22::run(&"22")?;
+            // day23::run(&"23")?;
+            // day24::run(&"24")?;
+            // day25::run(&"25")?;
         }
         _ => println!("Not covered"),
     };
