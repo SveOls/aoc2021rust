@@ -17,17 +17,12 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
 
     println!("day 18a result: {}", lines.map(|x| Comm::new(x.unwrap())).fold(Comm::None, |tot, x| tot + x).magnitude());
 
-
     Ok(())
-
-
-
 }
 
 
 pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
 
-    
     let data: Vec<Comm> = lines.map(|x| Comm::new(x.unwrap())).collect();
 
     let mut max_mag = 0;
@@ -40,9 +35,7 @@ pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     }
     println!("day 18b result: {}", max_mag);
 
-
     Ok(())
-
 }
 
 
@@ -60,11 +53,8 @@ impl Comm {
             Comm::B(a)
         } else {
             let mut position = 0;
-            // let mut open = inp.chars().filter(|&x| x == '[').count();
             let mut open = 0;
-            // println!("");
             for (i, ch) in inp.chars().enumerate() {
-                // println!("{}", open);
                 match ch {
                     '[' => open += 1,
                     ']' => open -= 1,
@@ -72,7 +62,7 @@ impl Comm {
                     _ => {}
                 }
             }
-            Comm::A(Box::new(Comm::new(inp[1..position].to_owned())), Box::new(Comm::new(inp[position+1..inp.chars().count()-1].to_owned())))
+            Comm::new(inp[1..position].to_owned()) + Comm::new(inp[position+1..inp.chars().count()-1].to_owned())
         }
     }
     fn split(&mut self) -> bool {
