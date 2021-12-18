@@ -89,7 +89,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             day15::run(&"15")?;
             day16::run(&"16")?;
             day17::run(&"17")?;
-            // day18::run(&"18")?;
+            day18::run(&"18")?;
             // day19::run(&"19")?;
             // day20::run(&"20")?;
             // day21::run(&"21")?;
