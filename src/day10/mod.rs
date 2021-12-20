@@ -19,6 +19,27 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
     let stacks: Vec<Vec<Brack>> = lines.map(|x| x.unwrap().chars().map(Brack::to_brack).collect()).collect();
 
     let mut score_a = 0;
+    for stack in &stacks {
+        let mut allowed = Vec::new();
+        for brack in stack {
+            if brack.opens() {
+                allowed.push(brack.inverse());
+            } else {
+                let new = allowed.pop().unwrap();
+                if !new.matcher(brack) {
+                    score_a += brack.score();
+                    break;
+                }
+            }
+        }
+    }
+    println!("day 10a result: {}", score_a);
+
+    Ok(())
+}
+pub fn run_b(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
+    let stacks: Vec<Vec<Brack>> = lines.map(|x| x.unwrap().chars().map(Brack::to_brack).collect()).collect();
+
     let mut score_b = Vec::new();
     for stack in &stacks {
         let mut broken = false;
@@ -29,7 +50,6 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
             } else {
                 let new = allowed.pop().unwrap();
                 if !new.matcher(brack) {
-                    score_a += brack.score();
                     broken = true;
                     break;
                 }
@@ -40,37 +60,7 @@ pub fn run_a(lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Er
         }
     }
     score_b.sort();
-    println!("day 10a result: {}", score_a);
     println!("day 10b result: {}", score_b[score_b.len()/2]);
-
-    Ok(())
-}
-pub fn run_b(_lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
-
-    // let stacks: Vec<Vec<Brack>> = lines.map(|x| x.unwrap().chars().map(Brack::to_brack).collect()).collect();
-
-    // let mut score = 0;
-    // for stack in &stacks {
-    //     let mut broken = false;
-    //     let mut allowed = Vec::new();
-    //     for brack in stack {
-    //         if brack.opens() {
-    //             allowed.push(brack.inverse());
-    //         } else {
-    //             let new = allowed.pop().unwrap();
-    //             if !new.matcher(brack) {
-    //                 score += brack.score();
-    //                 broken = true;
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     if !broken {
-
-    //     }
-    // }
-    // println!("{}", score);
-
     Ok(())
 }
 

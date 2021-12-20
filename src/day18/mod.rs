@@ -146,11 +146,7 @@ impl Add for Comm {
             Comm::None => other,
             a => Comm::A(Box::new(a), Box::new(other))
         };
-        // tried turning this into a normal while loop. Didn't work. So have this monstrosity.
-        while {
-            while let Some(_) = ret.pangs(0) { }
-            ret.split()
-        } {}
+        while ret.pangs(0).is_some() || ret.split() {}
         ret
     }
 }
