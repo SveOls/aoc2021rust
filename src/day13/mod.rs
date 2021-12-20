@@ -149,7 +149,7 @@ pub fn run_b(mut lines: Lines<BufReader<File>>) -> Result<(), Box<dyn std::error
         print!(".");
     }
     println!();
-    for j in 0..maxy+2 {
+    for j in 0..maxy+1 {
         print!(".");
         for i in 0..maxx+2 {
             print!("");
