@@ -88,10 +88,7 @@ impl Scanner {
     }
     fn flip(&mut self, new_pos: &[i64], new_pos_2: &[i64]) {
         for i in 0..self.data.len() {
-            let temp = self.data[i].clone();
-            self.data[i][0] = (1 - 2*((self.orientation/4)%2) as i64)                                 * temp[(self.orientation/8)%3]; 
-            self.data[i][1] = (1 - 2*(((((self.orientation+1)%4)/2)+(self.orientation/4))%2) as i64)  * temp[((self.orientation/8) + ((self.orientation%4)/2+1) )%3];
-            self.data[i][2] = (1 - 2*(self.orientation%2) as i64)                                     * temp[ ((self.orientation/8) + (((self.orientation+2)%4)/2+1) )%3];
+            self.data[i] = self.get(i);
         }
         self.orientation = 0;
         let mut a = [0, 0, 0];
